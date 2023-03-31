@@ -1,0 +1,26 @@
+<ngt-group *ngIf="nodes$ | ngtPush as nodes" [ref]="animations.ref" [position]="position">
+    <ngt-group [rotation]="[Math.PI / 2, 0, 0]" [scale]="0.01" (click)="onClick()">
+        <ngt-primitive *args="[$any(nodes).mixamorigHips]" />
+        <ngt-skinned-mesh
+            [castShadow]="true"
+            [receiveShadow]="true"
+            [geometry]="$any(nodes).stacy.geometry"
+            [skeleton]="$any(nodes).stacy.skeleton"
+            [rotation]="[-Math.PI / 2, 0, 0]"
+            [scale]="50"
+        >
+            <ngt-mesh-standard-material [map]="texture$ | ngtPush" [skinning]="true" />
+        </ngt-skinned-mesh>
+    </ngt-group>
+    <ngts-text
+        font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+        color="black"
+        [text]="login"
+        [fontSize]="0.1"
+        [position]="[0, 2, 0]"
+    />
+    <ngt-mesh [position]="[0, 1.5, -1]">
+        <ngt-circle-geometry *args="[0.6, 32]" />
+        <ngt-mesh-basic-material [map]="avatarTexture$ | ngtPush" [side]="DoubleSide" />
+    </ngt-mesh>
+</ngt-group>

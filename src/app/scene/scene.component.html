@@ -1,0 +1,18 @@
+<ngt-ambient-light />
+<ngt-directional-light [position]="[-5, 5, 5]" [castShadow]="true">
+    <ngt-vector2 *args="[1024, 1024]" attach="shadow.mapSize" />
+</ngt-directional-light>
+<ngt-group [position]="[0, -1, 0]">
+    <app-stacy
+        *ngFor="let user of users$ | ngtPush"
+        [login]="user.user.name || user.user.login"
+        [pose]="user.pose"
+        [position]="user.position"
+        [avatarUrl]="user.user.avatar_url"
+    />
+</ngt-group>
+<ngt-mesh [rotation]="[-Math.PI / 2, 0, 0]" [position]="[0, -1, 0]" [receiveShadow]="true">
+    <ngt-plane-geometry *args="[10, 10, 1, 1]" />
+    <ngt-shadow-material [transparent]="true" [opacity]="0.2" />
+</ngt-mesh>
+<ngts-orbit-controls />
